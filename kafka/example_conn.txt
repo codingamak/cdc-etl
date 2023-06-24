@@ -1,0 +1,221 @@
+
+CREATE SOURCE CONNECTOR postgresql_connector_related_entity_discovery_banned_parent WITH (
+  'connector.class' ='io.debezium.connector.postgresql.PostgresConnector',
+  'tasks.max' ='1',
+  'database.hostname' = 'dddb-dev.czsqjl3zgjav.us-west-2.rds.amazonaws.com',
+  'database.port' = '5432',
+  'database.user' = 'etl_user',
+  'database.password' = 'hu8jmn3123',
+  'database.server.name' = 'dddb-dev.czsqjl3zgjav.us-west-2.rds.amazonaws.com',
+  'database.dbname' = 'dddb',
+  'database.history.kafka.bootstrap.servers' = '54.245.43.107:9092',
+  'database.history.kafka.topic' = 'schema-changes.docker',
+  'key.converter.schema.registry.url'= 'http://54.245.43.107:8081',
+  'value.converter.schema.registry.url'= 'http://54.245.43.107:8081',
+  'key.converter'= 'org.apache.kafka.connect.json.JsonConverter',
+  'table.include.list' = 'related_entity_discovery.banned_parent',
+  'value.converter'= 'org.apache.kafka.connect.json.JsonConverter',
+  'transforms' = 'unwrap',
+  'transforms.unwrap.type' = 'io.debezium.transforms.ExtractNewRecordState',
+  'transforms.unwrap.drop.tombstones' = 'false',
+  'transforms.unwrap.delete.handling.mode' = 'drop',
+  'transforms.unwrap.operation.header' = 'true',
+  'topic.prefix'= 'odsdb',
+  'plugin.name'= 'pgoutput',
+  'time.precision.mode' = 'connect'
+);
+
+
+
+CREATE SOURCE CONNECTOR postgresql_connector_a2v_finding_type WITH (
+  'connector.class' ='io.debezium.connector.postgresql.PostgresConnector',
+  'tasks.max' ='1',
+  'database.hostname' = 'dddb-dev.czsqjl3zgjav.us-west-2.rds.amazonaws.com',
+  'database.port' = '5432',
+  'database.user' = 'etl_user',
+  'database.password' = 'hu8jmn3123',
+  'database.server.name' = 'dddb-dev.czsqjl3zgjav.us-west-2.rds.amazonaws.com',
+  'database.dbname' = 'dddb',
+  'database.history.kafka.bootstrap.servers' = '54.245.43.107:9092',
+  'database.history.kafka.topic' = 'schema-changes.docker',
+  'key.converter.schema.registry.url'= 'http://54.245.43.107:8081',
+  'value.converter.schema.registry.url'= 'http://54.245.43.107:8081',
+  'key.converter'= 'org.apache.kafka.connect.json.JsonConverter',
+  'table.include.list' = 'a2v_data.finding_type',
+  'value.converter'= 'org.apache.kafka.connect.json.JsonConverter',
+  'transforms' = 'unwrap',
+  'transforms.unwrap.type' = 'io.debezium.transforms.ExtractNewRecordState',
+  'transforms.unwrap.drop.tombstones' = 'false',
+  'transforms.unwrap.delete.handling.mode' = 'drop',
+  'transforms.unwrap.operation.header' = 'true',
+  'topic.prefix'= 'odsdb',
+  'plugin.name'= 'pgoutput',
+  'time.precision.mode' = 'connect'
+);
+
+CREATE SOURCE CONNECTOR postgresql_connector_manualReviewResult WITH (
+  'connector.class' ='io.debezium.connector.postgresql.PostgresConnector',
+  'tasks.max' ='1',
+  'database.hostname' = 'dddb-dev.czsqjl3zgjav.us-west-2.rds.amazonaws.com',
+  'database.port' = '5432',
+  'database.user' = 'etl_user',
+  'database.password' = 'hu8jmn3123',
+  'database.server.name' = 'dddb-dev.czsqjl3zgjav.us-west-2.rds.amazonaws.com',
+  'database.dbname' = 'dddb',
+  'database.history.kafka.bootstrap.servers' = '54.245.43.107:9092',
+  'database.history.kafka.topic' = 'schema-changes.docker',
+  'key.converter.schema.registry.url'= 'http://54.245.43.107:8081',
+  'value.converter.schema.registry.url'= 'http://54.245.43.107:8081',
+  'key.converter'= 'io.confluent.connect.avro.AvroConverter',
+  'table.include.list' = 'ddrr.ddrr_manualReviewResult',
+  'value.converter'= 'io.confluent.connect.avro.AvroConverter',
+  'transforms' = 'unwrap',
+  'transforms.unwrap.type' = 'io.debezium.transforms.ExtractNewRecordState',
+  'transforms.unwrap.drop.tombstones' = 'false',
+  'transforms.unwrap.delete.handling.mode' = 'drop',
+  'transforms.unwrap.operation.header' = 'true',
+  'topic.prefix'= 'odsdb',
+  'plugin.name'= 'pgoutput'
+);
+
+CREATE SOURCE CONNECTOR postgresql_connector_zoom_json WITH (
+  'connector.class' ='io.debezium.connector.postgresql.PostgresConnector',
+  'tasks.max' ='1',
+  'database.hostname' = 'dddb-dev.czsqjl3zgjav.us-west-2.rds.amazonaws.com',
+  'database.port' = '5432',
+  'database.user' = 'etl_user',
+  'database.password' = 'hu8jmn3123',
+  'database.server.name' = 'dddb-dev.czsqjl3zgjav.us-west-2.rds.amazonaws.com',
+  'database.dbname' = 'dddb',
+  'database.history.kafka.bootstrap.servers' = '54.245.43.107:9092',
+  'database.history.kafka.topic' = 'schema-changes.docker',
+  'key.converter.schema.registry.url'= 'http://54.245.43.107:8081',
+  'value.converter.schema.registry.url'= 'http://54.245.43.107:8081',
+  'key.converter'= 'org.apache.kafka.connect.json.JsonConverter',
+  'table.include.list' = 'zoominfo.zoominfo_json',
+  'value.converter'= 'org.apache.kafka.connect.json.JsonConverter',
+  'transforms' = 'unwrap',
+  'transforms.unwrap.type' = 'io.debezium.transforms.ExtractNewRecordState',
+  'transforms.unwrap.drop.tombstones' = 'false',
+  'transforms.unwrap.delete.handling.mode' = 'drop',
+  'transforms.unwrap.operation.header' = 'true',
+  'topic.prefix'= 'odsdb',
+  'plugin.name'= 'pgoutput'
+);
+
+
+#################################################################################################
+transforms.adjustSchemaName.type=io.debezium.transforms.SchemaNameAdjuster
+transforms.adjustSchemaName.prefix=my_prefix_
+dddb.ddrr.scoreHistoryMethodResult, dddb.ddrr.ddrr_manualReviewResult, dddb.ddrr.ddrr_organization_country,dddb.ddrr.ddrr_organization,dddb.ddrr.score_client_version_history,dddb.related_entity_discovery.record,dddb.zoominfo.zoominfo_json,dddb.a2v_data.assessment,dddb.ddrr.scoreTextOrganization,dddb.ddrr.scoreTextCategoryTemplate,dddb.ddrr.ddrr_containerOrganization,dddb.ddrr.ddrr_container,dddb.ddrr.scoreCountryCode,dddb.ddrr.scoreQuestion,dddb.ddrr.scoreIndustry,dddb.ddrr.ddrr_naicsInherentRiskIndustry,dddb.ddrr.scoreCategory,dddb.ddrr.scoreContext,dddb.ddrr.scoreMethodAnswer,dddb.ddrr.scoreMethod,dddb.ddrr.ddrr_manualReviewIndustryOption,related_entity_discovery.banned_parent=dddb.ddrr.scoreHistoryMethodResult, dddb.ddrr.ddrr_manualReviewResult, dddb.ddrr.ddrr_organization_country,dddb.ddrr.ddrr_organization,dddb.ddrr.score_client_version_history,dddb.related_entity_discovery.record,zoominfo.zoominfo_json,a2v_data.assessment,dddb.ddrr.scoreTextOrganization,dddb.ddrr.scoreTextCategoryTemplate,dddb.ddrr.ddrr_containerOrganization,dddb.ddrr.ddrr_container,dddb.ddrr.scoreCountryCode,dddb.ddrr.scoreQuestion,dddb.ddrr.scoreIndustry,dddb.ddrr.ddrr_naicsInherentRiskIndustry,dddb.ddrr.scoreCategory,dddb.ddrr.scoreContext,dddb.ddrr.scoreMethodAnswer,dddb.ddrr.scoreMethod,dddb.ddrr.ddrr_manualReviewIndustryOption,dddb.related_entity_discovery.banned_parent
+# sink connector
+CREATE SINK CONNECTOR sink_to_postgresql_a2v_data_finding_type WITH (
+    'connector.class'                         = 'io.confluent.connect.jdbc.JdbcSinkConnector',
+    'connection.url'                          = 'jdbc:postgresql://ods-sandbox.czsqjl3zgjav.us-west-2.rds.amazonaws.com:5432/odsdb?stringtype=unspecified',
+    'connection.user'                         = 'etl_user',
+    'connection.password'                     = 'hu8jmn3123',
+    'topics'                                  = 'odsdb.a2v_data.finding_type',
+    'key.converter'                           = 'org.apache.kafka.connect.json.JsonConverter',
+    'key.converter.schema.registry.url'       = 'http://54.245.43.107:8081',
+    'value.converter'                         = 'org.apache.kafka.connect.json.JsonConverter',
+    'value.converter.schema.registry.url'     = 'http://54.245.43.107:8081',
+    'auto.create'                             = 'true',
+    'auto.evolve'                             = 'true',
+    'insert.mode'                             = 'upsert',
+    'pk.mode'                                 = 'record_key',
+    'pk.fields'                               = 'id',
+    'delete.enabled'                          = 'true'
+);
+
+
+CREATE SINK CONNECTOR postgresql_connector_a2v WITH (
+    'connector.class'                         = 'io.confluent.connect.jdbc.JdbcSinkConnector',
+    'connection.url'                          = 'jdbc:postgresql://ods-sandbox.czsqjl3zgjav.us-west-2.rds.amazonaws.com:5432/odsdb?stringtype=unspecified',
+    'connection.user'                         = 'etl_user',
+    'connection.password'                     = 'hu8jmn3123',
+    'topics'                                  = 'odsdb.a2v_data.finding_type',
+    'key.converter'                           = 'org.apache.kafka.connect.json.JsonConverter',
+    'key.converter.schema.registry.url'       = 'http://54.245.43.107:8081',
+    'value.converter'                         = 'org.apache.kafka.connect.json.JsonConverter',
+    'value.converter.schema.registry.url'     = 'http://54.245.43.107:8081',
+    'auto.create'                             = 'true',
+    'auto.evolve'                             = 'true',
+    'insert.mode'                             = 'upsert',
+    'pk.mode'                                 = 'record_key',
+    'pk.fields'                               = 'id',
+    'delete.enabled'                          = 'true'
+);
+
+
+CREATE SINK CONNECTOR sink_to_postgresql_ddrr_manualReviewResult WITH (
+    'connector.class'                         = 'io.confluent.connect.jdbc.JdbcSinkConnector',
+    'connection.url'                          = 'jdbc:postgresql://ods-sandbox.czsqjl3zgjav.us-west-2.rds.amazonaws.com:5432/odsdb?stringtype=unspecified',
+    'connection.user'                         = 'etl_user',
+    'connection.password'                     = 'hu8jmn3123',
+    'topics'                                  = 'odsdb.ddrr_manualReviewResult',
+    'key.converter'                           = 'org.apache.kafka.connect.json.JsonConverter',
+    'key.converter.schema.registry.url'       = 'http://54.245.43.107:8081',
+    'value.converter'                         = 'org.apache.kafka.connect.json.JsonConverter',
+    'value.converter.schema.registry.url'     = 'http://54.245.43.107:8081',
+    'auto.create'                             = 'true',
+    'auto.evolve'                             = 'true',
+    'insert.mode'                             = 'upsert',
+    'pk.mode'                                 = 'record_key',
+    'pk.fields'                               = 'id',
+    'delete.enabled'                          = 'true'
+);
+
+CREATE SINK CONNECTOR sink_to_postgresql_ddrr_zoom_json WITH (
+    'connector.class'                         = 'io.confluent.connect.jdbc.JdbcSinkConnector',
+    'connection.url'                          = 'jdbc:postgresql://ods-sandbox.czsqjl3zgjav.us-west-2.rds.amazonaws.com:5432/odsdb?stringtype=unspecified',
+    'connection.user'                         = 'etl_user',
+    'connection.password'                     = 'hu8jmn3123',
+    'topics'                                  = 'odsdb.zoominfo.zoominfo_json',
+    'key.converter'                           = 'org.apache.kafka.connect.json.JsonConverter',
+    'key.converter.schema.registry.url'       = 'http://54.245.43.107:8081',
+    'value.converter'                         = 'org.apache.kafka.connect.json.JsonConverter',
+    'value.converter.schema.registry.url'     = 'http://54.245.43.107:8081',
+    'auto.create'                             = 'true',
+    'auto.evolve'                             = 'true',
+    'insert.mode'                             = 'upsert',
+    'pk.mode'                                 = 'record_key',
+    'pk.fields'                               = 'primary_key',
+    'delete.enabled'                          = 'true'
+);
+
+CREATE SINK CONNECTOR sink_to_postgresql_ddrr_zoom_json WITH (
+    'connector.class'                         = 'io.confluent.connect.jdbc.JdbcSinkConnector',
+    'connection.url'                          = 'jdbc:postgresql://ods-sandbox.czsqjl3zgjav.us-west-2.rds.amazonaws.com:5432/odsdb?stringtype=unspecified',
+    'connection.user'                         = 'etl_user',
+    'connection.password'                     = 'hu8jmn3123',
+    'topics'                                  = 'odsdb.zoominfo.zoominfo_json',
+    'key.converter'                           = 'org.apache.kafka.connect.json.JsonConverter',
+    'key.converter.schema.registry.url'       = 'http://54.245.43.107:8081',
+    'value.converter'                         = 'org.apache.kafka.connect.json.JsonConverter',
+    'value.converter.schema.registry.url'     = 'http://54.245.43.107:8081',
+    'auto.create'                             = 'true',
+    'auto.evolve'                             = 'true',
+    'insert.mode'                             = 'upsert',
+    'pk.mode'                                 = 'record_key',
+    'pk.fields'                               = 'primary_key',
+    'delete.enabled'                          = 'true'
+);
+
+CREATE SINK CONNECTOR sink_to_postgresql_related_entity_discovery_banned_parent WITH (
+    'connector.class'                         = 'io.confluent.connect.jdbc.JdbcSinkConnector',
+    'connection.url'                          = 'jdbc:postgresql://ods-sandbox.czsqjl3zgjav.us-west-2.rds.amazonaws.com:5432/odsdb?stringtype=unspecified',
+    'connection.user'                         = 'etl_user',
+    'connection.password'                     = 'hu8jmn3123',
+    'topics'                                  = 'odsdb.related_entity_discovery.banned_parent',
+    'key.converter'                           = 'org.apache.kafka.connect.json.JsonConverter',
+    'key.converter.schema.registry.url'       = 'http://54.245.43.107:8081',
+    'value.converter'                         = 'org.apache.kafka.connect.json.JsonConverter',
+    'value.converter.schema.registry.url'     = 'http://54.245.43.107:8081',
+    'auto.create'                             = 'true',
+    'auto.evolve'                             = 'true',
+    'insert.mode'                             = 'upsert',
+    'pk.mode'                                 = 'record_key',
+    'pk.fields'                               = 'id',
+    'delete.enabled'                          = 'true'
+);
+
